@@ -16,7 +16,6 @@ app.use((req, res, next) => {
 })
 
 app.post('/login', (req, res) => {
-
     const { login, senha } = req.body;
     const { DEFAULT_LOGIN, DEFAULT_PASSWORD, JWT_SECRET } = process.env;
     if (login === DEFAULT_LOGIN && senha === DEFAULT_PASSWORD) {
