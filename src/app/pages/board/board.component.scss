@@ -32,11 +32,23 @@
                 align-items: center;
                 flex-direction: column;
                 height: calc(100% - 29px);
+                min-height: 150px;
 
                 .app-card {
                     width: 100%;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        height: auto;
+        min-height: 100%;
+
+        .boards {
+            grid-template-columns: none;
         }
     }
 }
