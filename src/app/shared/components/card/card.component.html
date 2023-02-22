@@ -1,0 +1,20 @@
+<mat-card class="card list-card" *ngFor="let item of listBoard" cdkDrag>
+    <mat-card-header>
+        <mat-card-title>{{item.titulo}}</mat-card-title>
+        <mat-card-subtitle>{{item.conteudo}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+        <button mat-icon-button aria-label="Editar">
+            <mat-icon (click)="previous(item)">keyboard_arrow_left</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" aria-label="Editar">
+            <mat-icon (click)="edit(item)">edit</mat-icon>
+        </button>
+        <button class="delete-button" mat-icon-button color="warn" aria-label="Excluir">
+            <mat-icon (click)="delete(item)">delete</mat-icon>
+        </button>
+        <button class="delete-button" mat-icon-button aria-label="Excluir">
+            <mat-icon (click)="next(item)">keyboard_arrow_right</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
