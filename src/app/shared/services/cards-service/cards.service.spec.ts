@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed } from '@angular/core/testing';
 import { steps } from '../../enums/steps.enum';
 import { CardMock } from '../../mocks/card.mock';
 import { httpClientStub } from '../../stubs/http-cliente.stub';
 
-import { CardsServiceService } from './cards-service.service';
+import { CardsService } from './cards.service';
 
-describe('CardsServiceService', () => {
-  let service: CardsServiceService;
+describe('CardsService', () => {
+  let service: CardsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -15,26 +15,28 @@ describe('CardsServiceService', () => {
         { provide: HttpClient, useValue: httpClientStub },
       ]
     });
-    service = TestBed.inject(CardsServiceService);
+    service = TestBed.inject(CardsService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be teste getCards function', () => {
+  it('should be teste getCards function', fakeAsync(() => {
     service.getCards().subscribe((resp) => {
       expect(resp).toEqual({})
     })
-  })
-  it('should be teste postCard function', () => {
+  }))
+
+  it('should be teste postCard function', fakeAsync(() => {
     service.postCard(CardMock).subscribe(() => {
       service.getCards().subscribe((resp) => {
         expect(resp).toEqual(CardMock)
       })
     })
-  })
-  it('should be teste putCard function', () => {
+  }))
+
+  it('should be teste putCard function', fakeAsync(() => {
     service.postCard(CardMock).subscribe(() => {
       const cardEdited = CardMock;
       cardEdited.titulo = steps.SECOND_STEP
@@ -44,20 +46,14 @@ describe('CardsServiceService', () => {
         })
       })
     })
-  })
-  it('should be teste deleteCard function', () => {
-    service.getCards().subscribe(resp => {
-      expect(resp).toEqual({})
-      service.postCard(CardMock).subscribe(() => {
+  }))
+  it('should be teste deleteCard function', fakeAsync(() => {
+    service.postCard(CardMock).subscribe(() => {
+      service.deleteCard(CardMock).subscribe(() => {
         service.getCards().subscribe((resp) => {
-          expect(resp).toEqual(CardMock)
-          service.deleteCard(CardMock).subscribe(() => {
-            service.getCards().subscribe((resp)=> {
-              expect(resp).toEqual({})
-            })
-          })
+          expect(resp).toEqual({})
         })
       })
     })
-  })
+  }))
 });

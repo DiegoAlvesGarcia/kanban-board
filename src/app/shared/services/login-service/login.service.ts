@@ -6,7 +6,7 @@ import { LoginEnum } from '../../enums/login.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginServiceService {
+export class LoginService {
 
   constructor(
     private http: HttpClient

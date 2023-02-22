@@ -6,8 +6,8 @@ import { DialogTaskComponent } from 'src/app/shared/components/dialog-task/dialo
 import { steps } from 'src/app/shared/enums/steps.enum';
 import { IBoards } from 'src/app/shared/interfaces/boards.interface';
 import { ICard } from 'src/app/shared/interfaces/card.interface';
-import { CardsServiceService } from 'src/app/shared/services/cards-service/cards-service.service';
-import { LoginServiceService } from 'src/app/shared/services/login-service/login-service.service';
+import { CardsService } from 'src/app/shared/services/cards-service/cards.service';
+import { LoginService } from 'src/app/shared/services/login-service/login.service';
 
 @Component({
   selector: 'app-board',
@@ -19,8 +19,8 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private loginServiceService: LoginServiceService,
-    private cardsServiceService: CardsServiceService,
+    private loginService: LoginService,
+    private cardsService: CardsService,
     private changeDetectorRef: ChangeDetectorRef
   ) { }
 
@@ -29,7 +29,7 @@ export class BoardComponent implements OnInit {
   }
 
   private login() {
-    this.loginServiceService.login()
+    this.loginService.login()
       .pipe(first())
       .subscribe(() => {
         this.getCards();
@@ -37,7 +37,7 @@ export class BoardComponent implements OnInit {
   }
 
   private getCards() {
-    this.cardsServiceService.getCards()
+    this.cardsService.getCards()
       .pipe(first())
       .subscribe(respCards => {
         this.createBoards();
@@ -103,14 +103,14 @@ export class BoardComponent implements OnInit {
   }
 
   private postCard(dataCard: ICard) {
-    this.cardsServiceService.postCard(dataCard)
+    this.cardsService.postCard(dataCard)
       .subscribe(() => {
         this.getCards();
       });
   }
 
   private putCard(dataCard: ICard) {
-    this.cardsServiceService.putCard(dataCard)
+    this.cardsService.putCard(dataCard)
       .subscribe(() => {
         this.getCards();
       });
@@ -133,7 +133,7 @@ export class BoardComponent implements OnInit {
   }
 
   deleteCard(card: ICard) {
-    this.cardsServiceService.deleteCard(card)
+    this.cardsService.deleteCard(card)
       .subscribe(() => {
         this.getCards();
       });
