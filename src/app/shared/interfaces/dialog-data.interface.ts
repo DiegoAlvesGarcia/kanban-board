@@ -1,6 +1,6 @@
 import { ICard } from "./card.interface";
 
-export interface IDiealogData {
+export interface IDialogData {
     card: ICard,
     principalButton: string
 }

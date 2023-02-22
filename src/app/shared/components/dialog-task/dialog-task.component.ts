@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ICard } from '../../interfaces/card.interface';
-import { IDiealogData } from '../../interfaces/dialog-data.interface';
+import { IDialogData } from '../../interfaces/dialog-data.interface';
 
 @Component({
   selector: 'app-dialog-task',
@@ -15,11 +15,18 @@ export class DialogTaskComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DialogTaskComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IDiealogData
+    @Inject(MAT_DIALOG_DATA) public data: IDialogData
   ) { }
 
   ngOnInit(): void {
     this.createForm();
+  }
+
+  createForm() {
+    this.form = new FormGroup({
+      titulo: new FormControl(this.data.card?.titulo, [Validators.required]),
+      conteudo: new FormControl(this.data.card?.conteudo, [Validators.required])
+    });
   }
 
   closeDialog(isPrincipal: boolean): void {
@@ -33,12 +40,5 @@ export class DialogTaskComponent implements OnInit {
       }
     } 
     this.dialogRef.close(objectClose);
-  }
-
-  createForm() {
-    this.form = new FormGroup({
-      titulo: new FormControl(this.data.card?.titulo, [Validators.required]),
-      conteudo: new FormControl(this.data.card?.conteudo, [Validators.required])
-    });
   }
 }
