@@ -27,8 +27,8 @@ describe('LoginService', () => {
   })
 
   it('should be test token value', () => {
-    service.token = CardMock.id
+    service.token = CardMock[0].id
     const getToken = service.token
-    expect(getToken).toEqual(CardMock.id)
+    expect(getToken).toEqual(CardMock[0].id)
   })
 });

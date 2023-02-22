@@ -26,17 +26,17 @@ describe('CardsService', () => {
   })
 
   it('should be test postCard function', () => {
-    service.postCard(CardMock);
+    service.postCard(CardMock[0]);
     expect(httpClientStub.post).toHaveBeenCalled()
   })
 
   it('should be test putCard function', () => {
-    service.putCard(CardMock);
+    service.putCard(CardMock[0]);
     expect(httpClientStub.put).toHaveBeenCalled()
   })
 
   it('should be test deleteCard function', () => {
-    service.deleteCard(CardMock);
+    service.deleteCard(CardMock[0]);
     expect(httpClientStub.delete).toHaveBeenCalled()
   })
 });

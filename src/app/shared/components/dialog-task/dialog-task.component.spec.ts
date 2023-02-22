@@ -52,7 +52,7 @@ describe('DialogTaskComponent', () => {
     component.form.controls['conteudo'].setValue(component.data.card.conteudo)
     component.form.controls['titulo'].setValue(component.data.card.titulo)
     component.closeDialog(true)
-    expect(MatDialogRefStub.close).toHaveBeenCalledWith(CardMock)
+    expect(MatDialogRefStub.close).toHaveBeenCalledWith(CardMock[0])
   })
 
   it('should to test closeDialog function with data incompleted', () => {

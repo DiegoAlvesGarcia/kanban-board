@@ -75,8 +75,6 @@ export class BoardComponent implements OnInit {
         case this.boards[2].title:
           index = 2
           break;
-        default:
-          break;
       }
       this.boards[index].listBoard.push(card);
       this.changeDetectorRef.detectChanges();
@@ -93,7 +91,7 @@ export class BoardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((dataCard: ICard) => {
       if (dataCard) {
-        if (dataCard?.id) {
+        if (dataCard.id) {
           this.putCard(dataCard)
         } else {
           this.postCard(dataCard)
@@ -148,8 +146,6 @@ export class BoardComponent implements OnInit {
       case this.boards[2].title:
         index = 2
         break;
-      default:
-        break;
     }
     card.lista = this.boards[index - 1].title
     this.putCard(card)
@@ -163,8 +159,6 @@ export class BoardComponent implements OnInit {
         break;
       case this.boards[1].title:
         index = 1
-        break;
-      default:
         break;
     }
 

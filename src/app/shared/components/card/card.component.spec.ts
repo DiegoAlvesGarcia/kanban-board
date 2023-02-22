@@ -28,22 +28,22 @@ describe('CardComponent', () => {
 
   it('should to test edit function', () => {
     jest.spyOn(component.editCard, 'emit');
-    component.edit(CardMock)
-    expect(component.editCard.emit).toHaveBeenCalledWith(CardMock)
+    component.edit(CardMock[0])
+    expect(component.editCard.emit).toHaveBeenCalledWith(CardMock[0])
   });
   it('should to test delete function', () => {
     jest.spyOn(component.deleteCard, 'emit');
-    component.delete(CardMock)
-    expect(component.deleteCard.emit).toHaveBeenCalledWith(CardMock)
+    component.delete(CardMock[0])
+    expect(component.deleteCard.emit).toHaveBeenCalledWith(CardMock[0])
   });
   it('should to test next function', () => {
     jest.spyOn(component.nextStep, 'emit');
-    component.next(CardMock)
-    expect(component.nextStep.emit).toHaveBeenCalledWith(CardMock)
+    component.next(CardMock[0])
+    expect(component.nextStep.emit).toHaveBeenCalledWith(CardMock[0])
   });
   it('should to test previous function', () => {
     jest.spyOn(component.previousStep, 'emit');
-    component.previous(CardMock)
-    expect(component.previousStep.emit).toHaveBeenCalledWith(CardMock)
+    component.previous(CardMock[0])
+    expect(component.previousStep.emit).toHaveBeenCalledWith(CardMock[0])
   });
 });
