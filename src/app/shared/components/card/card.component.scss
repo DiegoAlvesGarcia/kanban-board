@@ -4,16 +4,14 @@
     margin: 8px 0;
     width: 100%;
 
-    mat-card-header {
-        mat-card-subtitle {
-            overflow-y: auto;
-            max-height: 100px;
-        }
-    }
-
-    mat-card-actions {
-        .delete-button {
-            margin-left: 8px;
+    .area-buttons {
+        display: flex;
+        justify-content: space-between;
+        mat-card-header {
+            mat-card-subtitle {
+                overflow-y: auto;
+                max-height: 100px;
+            }
         }
     }
 }

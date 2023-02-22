@@ -3,18 +3,18 @@
         <mat-card-title>{{item.titulo}}</mat-card-title>
         <mat-card-subtitle>{{item.conteudo}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-actions align="end">
-        <button mat-icon-button aria-label="Editar">
-            <mat-icon (click)="previous(item)">keyboard_arrow_left</mat-icon>
+    <mat-card-actions class="area-buttons">
+        <button (click)="previous(item)" mat-icon-button aria-label="Anterior" [disabled]="boardTitle === step.FISRT_STEP ">
+            <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
-        <button mat-icon-button color="primary" aria-label="Editar">
-            <mat-icon (click)="edit(item)">edit</mat-icon>
+        <button (click)="edit(item)" mat-icon-button color="primary" aria-label="Editar">
+            <mat-icon>edit</mat-icon>
         </button>
-        <button class="delete-button" mat-icon-button color="warn" aria-label="Excluir">
-            <mat-icon (click)="delete(item)">delete</mat-icon>
+        <button (click)="delete(item)" mat-icon-button color="warn" aria-label="Excluir">
+            <mat-icon>delete</mat-icon>
         </button>
-        <button class="delete-button" mat-icon-button aria-label="Excluir">
-            <mat-icon (click)="next(item)">keyboard_arrow_right</mat-icon>
+        <button (click)="next(item)" mat-icon-button aria-label="Próximo" [disabled]="boardTitle === step.THIRD_STEP ">
+            <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
     </mat-card-actions>
 </mat-card>

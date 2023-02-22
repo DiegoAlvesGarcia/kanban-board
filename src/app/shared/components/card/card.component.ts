@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { steps } from '../../enums/steps.enum';
 import { ICard } from '../../interfaces/card.interface';
 
 @Component({
@@ -8,10 +9,13 @@ import { ICard } from '../../interfaces/card.interface';
 })
 export class CardComponent {
   @Input() listBoard: ICard;
+  @Input() boardTitle: string;
   @Output() editCard = new EventEmitter<ICard>();
   @Output() deleteCard = new EventEmitter<ICard>();
   @Output() nextStep = new EventEmitter<ICard>();
   @Output() previousStep = new EventEmitter<ICard>();
+
+  step = steps
 
   edit(card: ICard) {
     this.editCard.emit(card)

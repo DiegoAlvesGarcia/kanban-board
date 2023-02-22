@@ -11,6 +11,7 @@
                 <app-card
                     class="app-card"
                     [listBoard]="board.listBoard"
+                    [boardTitle]="board.title"
                     (editCard)="editCard($event)"
                     (deleteCard)="deleteCard($event)"
                     (previousStep)="previousCard($event)"
