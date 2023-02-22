@@ -29,7 +29,7 @@ export class DialogTaskComponent implements OnInit {
     });
   }
 
-  closeDialog(isPrincipal: boolean): void {
+  closeDialog(isPrincipal?: boolean): void {
     let objectClose: ICard;
     if (isPrincipal) {
       objectClose = {

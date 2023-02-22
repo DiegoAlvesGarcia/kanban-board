@@ -2,7 +2,7 @@ import {
   HttpClient, HttpHeaders
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { catchError } from 'rxjs/internal/operators/catchError';
 import { steps } from '../../enums/steps.enum';
 import { ICard } from '../../interfaces/card.interface';
 import { LoginService } from '../login-service/login.service';
@@ -21,7 +21,16 @@ export class CardsService {
     const headers = {
       'Authorization': `Bearer ${this.loginService.token}`
     };
-    return this.http.get<Array<ICard>>('http://localhost:5000/cards/', { headers });
+    return this.http.get<Array<ICard>>('http://localhost:5000/cards/', { headers })
+      .pipe(
+        catchError(err => {
+          if (err.status === 401) {
+            location.reload()
+            throw 'token inválido. Recarregando tela para novo token';
+          }
+          throw 'API ERROR' + err.status;
+        })
+      );
   }
 
   postCard(dataCard: ICard) {
@@ -30,6 +39,15 @@ export class CardsService {
       'Authorization': `Bearer ${this.loginService.token}`
     };
     return this.http.post<ICard>('http://localhost:5000/cards/', body, { headers })
+      .pipe(
+        catchError(err => {
+          if (err.status === 401) {
+            location.reload()
+            throw 'token inválido. Recarregando tela para novo token';
+          }
+          throw 'API ERROR' + err.status;
+        })
+      );
   }
 
   putCard(dataCard: ICard) {
@@ -43,6 +61,15 @@ export class CardsService {
       'Authorization': `Bearer ${this.loginService.token}`
     };
     return this.http.put<ICard>(`http://localhost:5000/cards/${dataCard.id}`, body, { headers })
+      .pipe(
+        catchError(err => {
+          if (err.status === 401) {
+            location.reload()
+            throw 'token inválido. Recarregando tela para novo token';
+          }
+          throw 'API ERROR' + err.status;
+        })
+      );
   }
 
   deleteCard(dataCard: ICard) {
@@ -50,5 +77,14 @@ export class CardsService {
       'Authorization': `Bearer ${this.loginService.token}`
     };
     return this.http.delete<ICard>(`http://localhost:5000/cards/${dataCard.id}`, { headers })
+      .pipe(
+        catchError(err => {
+          if (err.status === 401) {
+            location.reload()
+            throw 'token inválido. Recarregando tela para novo token';
+          }
+          throw 'API ERROR' + err.status;
+        })
+      );
   }
 }
