@@ -20,22 +20,22 @@ describe('CardsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be teste getCards function', () => {
+  it('should be test getCards function', () => {
     service.getCards();
     expect(httpClientStub.get).toHaveBeenCalled()
   })
 
-  it('should be teste postCard function', () => {
+  it('should be test postCard function', () => {
     service.postCard(CardMock);
     expect(httpClientStub.post).toHaveBeenCalled()
   })
 
-  it('should be teste putCard function', () => {
+  it('should be test putCard function', () => {
     service.putCard(CardMock);
     expect(httpClientStub.put).toHaveBeenCalled()
   })
 
-  it('should be teste deleteCard function', () => {
+  it('should be test deleteCard function', () => {
     service.deleteCard(CardMock);
     expect(httpClientStub.delete).toHaveBeenCalled()
   })
