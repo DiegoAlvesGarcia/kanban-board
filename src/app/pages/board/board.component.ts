@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { first } from 'rxjs';
 import { DialogTaskComponent } from 'src/app/shared/components/dialog-task/dialog-task.component';
 import { steps } from 'src/app/shared/enums/steps.enum';
+import { IBoards } from 'src/app/shared/interfaces/boards.interface';
 import { ICard } from 'src/app/shared/interfaces/card.interface';
 import { CardsServiceService } from 'src/app/shared/services/cards-service/cards-service.service';
 import { LoginServiceService } from 'src/app/shared/services/login-service/login-service.service';
@@ -14,7 +15,7 @@ import { LoginServiceService } from 'src/app/shared/services/login-service/login
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
-  boards = [];
+  boards: Array<IBoards> = [];
 
   constructor(
     private dialog: MatDialog,
