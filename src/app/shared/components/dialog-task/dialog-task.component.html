@@ -1,0 +1,15 @@
+<form [formGroup]="form" class="form">
+    <mat-form-field class="input">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="titulo">
+    </mat-form-field>
+
+    <mat-form-field class="input">
+        <mat-label>Conteúdo</mat-label>
+        <input matInput formControlName="conteudo">
+    </mat-form-field>
+</form>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancelar</button>
+    <button mat-button [disabled]="form.invalid" (click)="closeDialog(true)" cdkFocusInitial>{{data.principalButton}}</button>
+</div>
