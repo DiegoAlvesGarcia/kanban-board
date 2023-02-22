@@ -1,0 +1,42 @@
+.container {
+    height: 100%;
+    padding: 0 8px;
+    background-color: #f5f5f5;
+    color: #0e0e0e;
+
+    header {
+        padding: 24px 8px;
+        display: flex;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+
+    .boards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        height: calc(100% - 113px);
+        overflow-x: auto;
+
+        .board {
+            min-width: 300px;
+            display: inline-block;
+            margin: 0 8px;
+            background: #e7e7e7;
+            padding: 12px;
+
+            .list {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                height: calc(100% - 29px);
+
+                .app-card {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

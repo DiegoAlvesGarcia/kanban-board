@@ -1,0 +1,22 @@
+<div cdkDropListGroup class="container">
+    <header>
+        <h1>Quadro Kanban</h1>
+        <button (click)="newCard()" mat-flat-button color="primary">Novo Card</button>
+    </header>
+    <div class="boards">
+        <div class="board" *ngFor="let board of boards">
+            <h2>{{board.title}}</h2>
+
+            <div cdkDropList [cdkDropListConnectedTo]="board.title" [cdkDropListData]="board.listBoard" class="list" (cdkDropListDropped)="drop($event)">
+                <app-card
+                    class="app-card"
+                    [listBoard]="board.listBoard"
+                    (editCard)="editCard($event)"
+                    (deleteCard)="deleteCard($event)"
+                    (previousStep)="previousCard($event)"
+                    (nextStep)="nextCard($event)"
+                ></app-card>
+            </div>
+        </div>
+    </div>
+</div>
